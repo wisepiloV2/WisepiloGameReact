@@ -1,0 +1,21 @@
+.container {
+  background-color: #27272a; 
+  border: 1px solid #3f3f46; 
+  border-radius: 16px; 
+  
+  overflow: hidden;
+  position: relative;
+  
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+  
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+  
+  color: #f4f4f5; 
+}
+
+.container:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.6), 
+              0 0 0 1px rgba(56, 189, 248, 0.3);
+  border-color: #52525b;
+}

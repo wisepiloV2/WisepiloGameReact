@@ -1,0 +1,1 @@
+export { GeoGrid as default } from './GeoGrid';
