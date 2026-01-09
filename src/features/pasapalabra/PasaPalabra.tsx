@@ -1,6 +1,7 @@
 import { useRoscoGame } from './hooks/useGameHook';
 import { RoscoWheel } from './components/RoscoWheel';
 import { QuestionCard } from './components/QuestionCard';
+import { MenuOptions } from './components/MenuOptions';
 import style from './PasaPalabra.module.css'
 
 export const GameContainer = () => {
@@ -17,10 +18,13 @@ export const GameContainer = () => {
   } = useRoscoGame();
 
   return (
-    <div>
-      <p>
-        {timeLeft} s
-      </p>
+    <div className={style.container}>
+      <div className={style.options}>
+        <MenuOptions />
+        <span className={`${style.timer} ${timeLeft <= 10 ? style.critical : ''}`}>
+          {timeLeft}s
+        </span>
+      </div>
 
       <RoscoWheel questions={questions} currentIdx={currentIndex}>
         {!isGameActive && !isGameFinished && (

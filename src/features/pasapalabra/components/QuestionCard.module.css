@@ -55,16 +55,17 @@
   font-weight: 600;
   color: #fff;
   padding: 0.5rem 1rem;
-  border-radius: 99px;
+  border-radius: 10px;
   margin-top: 5px;
-  background-color: #cc00ff;
+  background-color: #000;
+  border: 1px solid #4b035e;
   box-shadow: 0 4px 15px rgba(204, 0, 255, 0.3);
   transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .btn:hover {
   transform: translateY(-2px) scale(1.05); 
-  background-color: #d633ff;
+  background-color: rgb(190, 41, 231);
   box-shadow: 0 8px 20px rgba(204, 0, 255, 0.5);
 }
 
