@@ -1,10 +1,9 @@
-import React from 'react';
 import { useTicTacToe } from './hooks/useTicTacToe';
 import GameMenu from './components/GameMenu';
 import Board from './components/Board';
 import style from './TicTacToe.module.css'
 
-export const TicTacToe: React.FC = () => {
+export const TicTacToe = () => {
   const { 
     board, 
     turn, 

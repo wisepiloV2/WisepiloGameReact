@@ -13,7 +13,7 @@ interface Game {
 
 const GAMES: Game[] = [
   { id: 'geo-grid', title: 'Geo Grid', img: '/assets/GeoGrid.png', route: '/geo-grid' },
-  { id: 'pasapalabra', title: 'Pasapalabra', img: '/assets/PasaPalabra.png', route: '/papalabra' },
+  { id: 'pasapalabra', title: 'Pasapalabra', img: '/assets/PasaPalabra.png', route: '/pasapalabra' },
   { id: 'tic-tac-toe', title: 'Tic Tac Toe', img: '/assets/TicTacToe.png', route: '/tic-tac-toe' },
 ];
 
