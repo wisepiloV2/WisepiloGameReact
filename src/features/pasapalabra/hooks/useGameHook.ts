@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { type Question, type AnswerState } from '../types/types';
 import { textNormalize } from '../utils/gameHelpers';
-import { INITIAL_DATA } from '../data/mockData';
+import { getGameData, getCategoriesGame } from '../services/questionsService'
 
 export const useRoscoGame = (initialTime: number = 10) => {
-  const [questions, setQuestions] = useState<Question[]>(INITIAL_DATA);
+  const [questions, setQuestions] = useState<Question[]>([]);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [timeLeft, setTimeLeft] = useState<number>(initialTime);
   const [isGameActive, setIsGameActive] = useState<boolean>(false);
@@ -16,13 +16,15 @@ export const useRoscoGame = (initialTime: number = 10) => {
       interval = setInterval(() => {
         setTimeLeft((prev) => prev - 1);
       }, 1000);
-    } else if (timeLeft === 0) {
+    } else if (timeLeft === 0 && isGameActive) { 
       finishGame();
     }
     return () => clearInterval(interval);
   }, [isGameActive, timeLeft, isGameFinished]);
 
   const getNextIndex = (startIndex: number, list: Question[]) => {
+    if (!list || list.length === 0) return -1; 
+
     let nextIndex = (startIndex + 1) % list.length;
     let loopCount = 0;
     
@@ -47,7 +49,7 @@ export const useRoscoGame = (initialTime: number = 10) => {
   };
 
   const processAnswer = (userAnswer: string) => {
-    if (isGameFinished) return;
+    if (isGameFinished || questions.length === 0) return;
 
     const currentQ = questions[currentIndex];
     const isCorrect = textNormalize(userAnswer) === textNormalize(currentQ.answer);
@@ -65,15 +67,20 @@ export const useRoscoGame = (initialTime: number = 10) => {
   };
 
   const passTurn = () => {
-    if (isGameFinished) return;
+    if (isGameFinished || questions.length === 0) return;
     const next = getNextIndex(currentIndex, questions);
     if (next !== -1) setCurrentIndex(next);
   };
 
-  const startGame = () => {
-    setQuestions(INITIAL_DATA);
+  const getCategories = () => {
+    return getCategoriesGame();
+  }
+
+  const startGame = (category: string = 'mix') => {
+    const gameData = getGameData(category);
+    setQuestions(gameData);
     setCurrentIndex(0);
-    setTimeLeft(initialTime);
+    setTimeLeft(initialTime); 
     setIsGameActive(true);
     setIsGameFinished(false);
   };
@@ -83,15 +90,18 @@ export const useRoscoGame = (initialTime: number = 10) => {
     setIsGameFinished(true);
   };
 
+  const currentQuestion = questions.length > 0 ? questions[currentIndex] : null;
+
   return {
     questions,
-    currentQuestion: questions[currentIndex],
+    currentQuestion, 
     currentIndex,
     timeLeft,
     isGameActive,
     isGameFinished,
     startGame,
     processAnswer,
-    passTurn
+    passTurn,
+    getCategories
   };
 };
