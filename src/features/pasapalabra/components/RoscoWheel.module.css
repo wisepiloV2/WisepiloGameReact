@@ -15,6 +15,7 @@
 }
 
 .letter {
+  all: unset;
   position: absolute;
   width: var(--item-size);
   height: var(--item-size);
@@ -23,17 +24,16 @@
   background-color: #fff;
   color: #000;
   font-weight: bold;
+  font-size: clamp(0.8rem, 2.5vmin, 1.1rem);
+  font-family: 'Nunito', sans-serif;
   text-align: center;
+  cursor: pointer;
   border-radius: 50%;
   --radius: calc((var(--wheel-size) / 2) - (var(--item-size) / 2));
   transform: 
     rotate(calc(360deg / var(--total) * var(--i))) 
     translate(var(--radius))
     rotate(calc(-360deg / var(--total) * var(--i) + 90deg));
-}
-
-.letter:hover{
-  cursor: pointer;
 }
 
 .pending {
@@ -62,4 +62,27 @@
   z-index: 10; 
   background: transparent;
   padding: 1rem;
+}
+
+.answer{
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  transform: translate(-50%, -10%) rotate(90deg);
+  font-size: clamp(0.8rem, 2.5vmin, 1.1rem);
+  font-family: 'Nunito', sans-serif;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: bold;
+  z-index: 10;
+  pointer-events: none; 
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.answer.show {
+  opacity: 1;
 }

@@ -3,7 +3,7 @@ import { type Question, type AnswerState } from '../types/types';
 import { textNormalize } from '../utils/gameHelpers';
 import { getGameData, getCategoriesGame } from '../services/questionsService'
 
-export const useRoscoGame = (initialTime: number = 10) => {
+export const useRoscoGame = (initialTime: number = 240) => {
   const [questions, setQuestions] = useState<Question[]>([]);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [timeLeft, setTimeLeft] = useState<number>(initialTime);

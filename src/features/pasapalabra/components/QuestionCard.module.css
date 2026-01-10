@@ -15,7 +15,8 @@
 }
 
 .definition {
-  font-size: clamp(0.8rem, 2.5vmin, 1.1rem); 
+  font-size: clamp(0.8rem, 2.5vmin, 1.1rem);
+  font-family: 'Nunito', sans-serif;
   font-weight: 500;
   color: #fff;
   line-height: 1.4;
@@ -36,7 +37,8 @@
   padding: 0.4rem 0.8rem;
   border: 2px solid #e5e7eb;
   border-radius: 99px; 
-  font-size: clamp(0.8rem, 2.5vmin, 1.1rem); 
+  font-size: clamp(0.8rem, 2.5vmin, 1.1rem);
+  font-family: 'Nunito', sans-serif;
   text-align: center;
   transition: border-color 0.2s;
   outline: none;
@@ -52,6 +54,7 @@
   display: inline-block; 
   cursor: pointer;
   font-size: clamp(0.8rem, 2.5vmin, 1.1rem);
+  font-family: 'Nunito', sans-serif;
   font-weight: 600;
   color: #fff;
   padding: 0.5rem 1rem;
